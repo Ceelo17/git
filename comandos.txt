@@ -43,7 +43,31 @@ caso o arquivo esteja já em stage deve utilizar --cached ou --staged
 	git diff --cached
 	git diff --staged
 
-lista todas as alterações (do mais recente para o mais antigo)
+lista todas as alterações (commits) do mais recente para o mais antigo
 mostra o sha-1 código
 head aponta para o último commit
 	git log
+
+configura o email e o nome
+	git config --global user.email
+	git config --global user.name
+
+se aparecer : ao final do git bash quer dizer que tem mais arquivos para baixo e para sair dessa configuração aperte q de "quite"
+
+lista todas as alterações (commits) sem o nome do author, nem a data e o email, somente com o hash e o nome do commit
+	git log --oneline
+
+lista um número específico de commits que devem aparecer
+	git log -n
+	git log -1
+	git log -3
+
+lista o histórico de commits com as diferenças (patches) de cada commit
+	git log -p
+
+lista um resumo estático das alterações de cada commit
+	git log --stat
+	git log --shortstat --oneline
+
+altera a mensagem do último commit ou é possível adicionar arquivos nesse commit
+	git commit --amend -m ""

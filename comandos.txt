@@ -2,21 +2,21 @@ verifica o estado da branch
 git status
 
 adiciona um arquivo para stage
-git add file.txt
+	git add file.txt
 
 adiciona todos os arquivos para stage
-git add .
+	git add .
 
 deletar um arquivo específico - passar para unstage
-git rm --cached file.txt
+	git rm --cached file.txt
 
 deletar todos os arquivos - passar para unstage
 o -r significa de maneira recursiva
 o ponto seleciona todos os arquivos
-git rm --cached -r .
+	git rm --cached -r .
 
 commitar
-git commit -m ""
+	git commit -m ""
 
 
 4 estados
@@ -37,6 +37,13 @@ cenário que um arquivo se encontra em dois estados ao mesmo tempo
 	- é possível que um arquivo esteja em dois estados ao mesmo tempo, por exemplo, ao modificar um arquivo e adiciona-lo passando para stage e após isso modificar novamente, o git cria uma cópia do arquivo em stage e caso não seja adicionado a nova alteração e seja feito o commit, somente o que está em stage será commitado
 
 faz a comparação de dois arquivos (versão modificada e a versão não modificada) mostrando a diferença do que foi modificado, usa o arquivo modificado x arquivo commitado
-git diff
+	git diff
 
-caso o arquivo esteja já em stage deve utilizar --cached
+caso o arquivo esteja já em stage deve utilizar --cached ou --staged
+	git diff --cached
+	git diff --staged
+
+lista todas as alterações (do mais recente para o mais antigo)
+mostra o sha-1 código
+head aponta para o último commit
+	git log

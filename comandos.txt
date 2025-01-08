@@ -81,3 +81,6 @@ deve utilizar o amend com cuidado pois caso a branch seja compartilhada ele excl
 
 abre o visual studio code diretamente na pasta
 code .
+
+alterna entre os commits para visualizar os arquivos como estavam naquele commit e útil caso o projeto esteja sendo executado
+git checkout código hash

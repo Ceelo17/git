@@ -80,7 +80,33 @@ deve utilizar o amend com cuidado pois caso a branch seja compartilhada ele excl
 	git config --global core.editor "code --wait"
 
 abre o visual studio code diretamente na pasta
-code .
+	code .
 
 alterna entre os commits para visualizar os arquivos como estavam naquele commit e útil caso o projeto esteja sendo executado
-git checkout código hash
+	git checkout código hash
+
+caso queira descartar todas as mudanças em stage para a última versão conhecida, esse comando irá descartar todas as mudanças em stage não será parcialmente, caso seja um arquivo novo ou que não tenha versões anteriores, untracked este comando não irá funcionar pois ele volta para a última versão conhecida deste arquivo e caso não tenha irá dar erro
+	git checkout nomedoaquivo.txt
+
+remove os arquivos não rastreados (untrackeds), a flag -f força a execução do comando
+	git clean -f
+
+remove arquivos rastreados da área de preparação (stage) se não houver ou se houver histórico antes
+	git rm --cached nomedoarquivo.txt
+
+remove arquivos rastreados da área de preparação (stage) somente se houver histórico antes
+	git restore --staged nomedoarquivo.txt
+
+volta totalmente o arquivo para o último commit (modificado e em preparação)
+mesmo que o git add tenho sido feito irá remover
+só não irá remover os arquivos sem rastreamento, pois o git não os conhece
+	git reset --hard
+
+arquivo gitignore faz com que arquivos que não tenham a necessidade de subir para o git sejam ignorados pelas suas extensões ou especificando cada arquivo
+	*.extensão - irá ignorar todos os arquivos com essa extensão
+	nomedoarquivo.txt - irá ignorar o arquivo específico
+
+para parar de rastrear o arquivo no git, útil quando é necessário adicionar o arquivo ou extensões ao gitignore, porém já é um arquivo conhecido do git
+	git update-index --skip-worktree nomedoarquivo.txt
+	git update-index --no-skip-worktree nomedoarquivo.txt para rastrear o arquivo ou as extensões novamente
+

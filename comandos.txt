@@ -106,7 +106,11 @@ arquivo gitignore faz com que arquivos que não tenham a necessidade de subir pa
 	*.extensão - irá ignorar todos os arquivos com essa extensão
 	nomedoarquivo.txt - irá ignorar o arquivo específico
 
-para parar de rastrear o arquivo no git, útil quando é necessário adicionar o arquivo ou extensões ao gitignore, porém já é um arquivo conhecido do git
+para parar de rastrear o arquivo no git, útil quando é necessário adicionar o arquivo ou extensões ao gitignore, porém já é um arquivo conhecido do git, neste caso o passado do arquivo ainda existe, mas a partir deste comandos em diante deixa de ser observado pelo git, o objetivo seria esse mesmo mantendo a rastreabilidade destas ações
 	git update-index --skip-worktree nomedoarquivo.txt
 	git update-index --no-skip-worktree nomedoarquivo.txt para rastrear o arquivo ou as extensões novamente
 
+
+clonar um repositório sendo ele na nuvem ou local, mantém o histórico do git
+	git clone repositorio clonerepositorio
+	git clone https:repositorioremoto.com.br

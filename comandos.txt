@@ -114,3 +114,22 @@ para parar de rastrear o arquivo no git, útil quando é necessário adicionar o
 clonar um repositório sendo ele na nuvem ou local, mantém o histórico do git
 	git clone repositorio clonerepositorio
 	git clone https:repositorioremoto.com.br
+
+adiciona um repositório
+git remote add origin https:repositorioremoto.com.br
+
+atualiza as informações da branch para a versão mais atual do repositório
+	git pull
+
+conceito do GitHub no qual é possível copiar um repositório para a sua conta
+é possível acompanhar e comparar quando e o que foi alterado no repositório principal no repositório cópia
+	fork
+
+quando existe uma solicitação ou propostas de alterações de um contribuidor para o repositório main, é possível fazer a partir de um repositório fork, isso traz uma qualidade no código, pois outros usuários podem analisar e propor melhorias ou segestões
+	pull request
+
+quando alguma coisa foi reportada como defeituosa, bug, melhoria ou seugestõe por algum colaborador, fica visível para outros colaboradores no github
+issues
+
+um agrupamento de issues ou PR´s que representam marcos no projeto, como por exemplo, fases, objetivos, entre outros
+	milestones

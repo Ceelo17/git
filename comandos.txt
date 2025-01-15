@@ -144,6 +144,12 @@ deletar uma branch (repositório remoto)
 não é removida localmente, caso ocorra o push a branch irá ser criada novamente
 	git push --delete origin nomearam
 
-renomear um branch
+renomear um branch (localmente)
 	git branch -m nomedabranchnovo (caso esteja na branch)
 	git branch -m nomedabranch nomedabranchnovo (caso steja em outra branch)
+
+renomear uma branch (remotamente)
+não é possível renomear uma branch remota, porém é possível seguir com um processo diferente
+	1 passo deletar a branch remotamente - git push --delete origin nomedabrancherrado
+	2 passo alterar o nome localmente - git branch -m nomedabranchcorreto
+	3 passo executar novamente o comando para subir a branch remotamente com o nome correto - git push --set-upstream origin nomedabranchcorreto (caso não seja executado esse comando irá subir remotamente com o nome antigo que estava errado)

@@ -138,4 +138,9 @@ deletar uma branch (localmente)
 	git branch -d nomedabranch
 
 deletar uma branch (repositório remoto)
-	git push --delete origin nomedabranch
+não é removida localmente, caso ocorra o push a branch irá ser criada novamente
+	git push --delete origin nomearam
+
+renomear um branch
+	git branch -m nomedabranchnovo (caso esteja na branch)
+	git branch -m nomedabranch nomedabranchnovo (caso steja em outra branch)

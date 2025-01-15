@@ -65,6 +65,9 @@ lista um número específico de commits que devem aparecer
 lista o histórico de commits com as diferenças (patches) de cada commit
 	git log -p
 
+lista o histórico de commits de uma branch específica sem necessariamente estar nela
+	git log nomedabranch --oneline
+
 lista um resumo estático das alterações de cada commit
 	git log --stat
 	git log --shortstat --oneline

@@ -133,3 +133,9 @@ issues
 
 um agrupamento de issues ou PR´s que representam marcos no projeto, como por exemplo, fases, objetivos, entre outros
 	milestones
+
+deletar uma branch (localmente)
+	git branch -d nomedabranch
+
+deletar uma branch (repositório remoto)
+	git push --delete origin nomedabranch

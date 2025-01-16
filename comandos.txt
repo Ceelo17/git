@@ -168,3 +168,4 @@ verifica quais branchs foram mergeadas
 
 caso a branch esteja em processo de merging e queira cancelar o processo
 	git merge --abort
+	git reset -- hard

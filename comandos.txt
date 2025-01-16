@@ -161,3 +161,6 @@ merge - mescla as alterações de uma branch para outra sempre trazendo as infor
 
 verifica quais branchs não foram mergeadas
 	git branch --no-merged
+
+verifica quais branchs foram mergeadas
+	git branch --merged

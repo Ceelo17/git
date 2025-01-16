@@ -157,4 +157,7 @@ não é possível renomear uma branch remota, porém é possível seguir com um 
 	2 passo alterar o nome localmente - git branch -m nomedabranchcorreto
 	3 passo executar novamente o comando para subir a branch remotamente com o nome correto - git push --set-upstream origin nomedabranchcorreto (caso não seja executado esse comando irá subir remotamente com o nome antigo que estava errado)
 
-merge - mescla alterações de uma branch para outra sempre trazendo as informações
+merge - mescla as alterações de uma branch para outra sempre trazendo as informações
+
+verifica quais branchs foram mergeadas
+	git branch --merged

@@ -74,12 +74,12 @@ lista um resumo estático das alterações de cada commit
 
 altera a mensagem do último commit ou é possível adicionar arquivos nesse commit
 	git commit --amend -m ""
-	git commit --amend --no-edit (commita sem alterar a mensagem do commit) - este comando após um merge irá gerar conflitos ao realizar o push
+	git commit --amend --no-edit (commita sem alterar a mensagem do commit) - este comando caso o commit já tenha sido enviado para o servidor qualquer alteração que seja feita com esse comando ao realizar o push irá ter conflitos e para resolver deve-se executar o git pull antes e resolver os conflitos e após isso executar o commit com esse merge, caso queira sem esse commit deve executar o push com a tag --force (isso pode sobrescrever alterações de outros colaboradores)
 	git commit --amend (abre o editor vim)
 para editar o commit via vim aperte a tecla I para mudar para INSERT, altere a mensagem e aperte ESC para sair do modo edição, para salvar :wq (write and quite) e para sair sem salvar :q!
 deve utilizar o amend com cuidado pois caso a branch seja compartilhada ele exclui o último hash e commita um novo para alterar a mensagem do commit ou fazer alterações no arquivo, caso alguém esteja trabalhando no mesmo commit estará em uma versão antiga e que com o --amend que foi deletada podendo perder algum processo
 
-é possível alterar o editor padrão (vim) para outro editor da sua esolha com uma interface mais amigável, como por exemplo o visual studio code, nele somente alterando, salvando e fechando-o já realiza as alterações sem precisar dos comandos do vim (é necessário já ter instalado o outro editor)
+é possível alterar o editor padrão (vim) para outro editor da sua escolha com uma interface mais amigável, como por exemplo o visual studio code, nele somente alterando, salvando e fechando-o já realiza as alterações sem precisar dos comandos do vim (é necessário já ter instalado o outro editor)
 	git config --global core.editor "code --wait"
 
 abre o visual studio code diretamente na pasta
@@ -177,6 +177,8 @@ conceitos de SCM
 
 tags - versões do projeto no qual facilita encontrar pontos importantes
 este comando cria no momento em que você está dos commits, deste modo irá criar no último commit, não é possível criar duas tags com o mesmo nome
+
+este comando cria uma tag em um ponto específico, deste modo irá criar no último commit, não é possível criar duas tags com o mesmo nome
 	git tag nomedatag
 
 annotated tag - uma tag que pode levar uma mensagem e informações sobre quem criou
@@ -200,7 +202,6 @@ cria uma tag em um ponto específico informando o hash do commit e com informaç
 envia a tag para o servidor
 	git push origin nomedatag (específica)
 	git push --tags (todas) - não é recomensado, pois pode ser que no seu repositório local tenham tags que já foram apagadas ou renomeadas do servidor
-
 
 é possível utilizar a tag como se fosse o hash em relação a navegar em um ponto específico do projeto, pois a tag tem um nome mais fácil que o hash gerado
 	git checkout nomedatag

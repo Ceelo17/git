@@ -169,3 +169,24 @@ verifica quais branchs foram mergeadas
 caso a branch esteja em processo de merging e queira cancelar o processo
 	git merge --abort
 	git reset -- hard
+
+conceitos de SCM
+	main - versão final do projeto com tudo funcionando
+	develop - versão estável, porém não possui todas as funcionalidades
+	features - funcionalidades novas que podem ou não ser implementadas
+
+tags - versões do projeto no qual facilita encontrar pontos importantes
+este comando cria uma tag em um ponto específico, deste modo irá criar no último commit, não é possível criar duas tags com o mesmo nome
+	git tag nomedatag
+
+annotated tag - uma tag que pode levar uma mensagem e informações sobre quem criou
+	git tag -a -m "mensagemdatag" nomedatag
+
+mostra uma tag em específico, se for uma annotaded tag irá mostra informações sobre quem criou a tag, caso contrario irá mostrar somente detalhes do commit
+	git show nomedatag
+
+mostra todas as tags do projeto
+	gt tag
+
+mostra todas as tags com a descrição
+	git tag -n

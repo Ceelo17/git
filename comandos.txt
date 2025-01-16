@@ -158,6 +158,13 @@ não é possível renomear uma branch remota, porém é possível seguir com um 
 	3 passo executar novamente o comando para subir a branch remotamente com o nome correto - git push --set-upstream origin nomedabranchcorreto (caso não seja executado esse comando irá subir remotamente com o nome antigo que estava errado)
 
 merge - mescla as alterações de uma branch para outra sempre trazendo as informações
+caso ocorra mudanças no mesmo lugar nas duas branchs poderá ocorrer um conflito que deve ser resolvido
 
 verifica quais branchs não foram mergeadas
 	git branch --no-merged
+
+verifica quais branchs foram mergeadas
+	git branch --merged
+
+caso a branch esteja em processo de merging e queira cancelar o processo
+	git merge --abort

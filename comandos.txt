@@ -74,7 +74,7 @@ lista um resumo estático das alterações de cada commit
 
 altera a mensagem do último commit ou é possível adicionar arquivos nesse commit
 	git commit --amend -m ""
-	git commit --amend --no-edit (commita sem alterar a mensagem do commit)
+	git commit --amend --no-edit (commita sem alterar a mensagem do commit) - este comando após um merge irá gerar conflitos ao realizar o push
 	git commit --amend (abre o editor vim)
 para editar o commit via vim aperte a tecla I para mudar para INSERT, altere a mensagem e aperte ESC para sair do modo edição, para salvar :wq (write and quite) e para sair sem salvar :q!
 deve utilizar o amend com cuidado pois caso a branch seja compartilhada ele exclui o último hash e commita um novo para alterar a mensagem do commit ou fazer alterações no arquivo, caso alguém esteja trabalhando no mesmo commit estará em uma versão antiga e que com o --amend que foi deletada podendo perder algum processo

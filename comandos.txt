@@ -207,5 +207,16 @@ envia a tag para o servidor
 	git checkout nomedatag
 
 apagar uma tag do servidor, para apagar uma tag do servidor deve-se apagar localmente e posteriormente enviar o comando para atualizar essa deleção no servidor
-git tag -d nomedatag
-git push --delete nomedatag
+	git tag -d nomedatag
+	git push --delete nomedatag
+
+stash quando você possui alterações em uma branch que não estão prontas para um commit ainda e necessita navegar em outra branch sem levar estas alterações, após as mudanças na outra branch e o retorno para a branch principal é possível voltar as alterações, só é valido esse comando para arquivos rastreados, o stash fica salvo no repositório sendo possível utilizá-lo em outras branchs
+	git stash - salvar as mudanças antes de navegar para outra branch
+	git stash list - listar os stashs (o 0 será sempre o mais stash mais recente)
+		stash@{0}: wip on your_branch: hash commit_name
+		stash@{1}: wip on your_branch: hash commit_name
+	git stash apply - aplicar novamente as mudanças do stash mais recente stash@{0}
+	git stash apply stash@{1} - aplicar novamente as mudanças de um stash específico informando o seu número
+	git stash pop stash@{0} - aplicar o stash e remove-lo em seguida, caso não seja informado o stash irá utilizar o mais 
+	git stash drop stash@{0} - remover um stash sem a necessidade de aplicar, caso não seja informado o stash irá utilizar o mais recente
+	git stash branch nome_branch stash@{1} - criar uma branch a partir de um stash, caso não seja informado o stash irá utilizar o mais recente 

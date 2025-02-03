@@ -74,7 +74,7 @@ lista um resumo estático das alterações de cada commit
 
 altera a mensagem do último commit ou é possível adicionar arquivos nesse commit
 	git commit --amend -m ""
-	git commit --amend --no-edit (commita sem alterar a mensagem do commit) - este comando caso o commit já tenha sido enviado para o servidor qualquer alteração que seja feita com esse comando ao realizar o push irá ter conflitos e para resolver deve-se executar o git pull antes e resolver os conflitos e após isso executar o commit com esse merge, caso queira sem esse commit deve executar o push com a tag --force (isso pode sobrescrever alterações de outros colaboradores)
+	git commit --amend --no-edit (commita sem alterar a mensagem do commit) - este comando caso o commit já tenha sido enviado para o servidor qualquer alteração que seja feita com esse comando ao realizar o push irá ter conflitos, pois este comando altera o hash do último commit e para resolver deve-se executar o git pull antes e resolver os conflitos e após isso executar o commit com esse merge, caso queira sem esse commit deve executar o push com a tag --force (isso pode sobrescrever alterações de outros colaboradores)
 	git commit --amend (abre o editor vim)
 para editar o commit via vim aperte a tecla I para mudar para INSERT, altere a mensagem e aperte ESC para sair do modo edição, para salvar :wq (write and quite) e para sair sem salvar :q!
 deve utilizar o amend com cuidado pois caso a branch seja compartilhada ele exclui o último hash e commita um novo para alterar a mensagem do commit ou fazer alterações no arquivo, caso alguém esteja trabalhando no mesmo commit estará em uma versão antiga e que com o --amend que foi deletada podendo perder algum processo
@@ -207,6 +207,5 @@ envia a tag para o servidor
 	git checkout nomedatag
 
 apagar uma tag do servidor, para apagar uma tag do servidor deve-se apagar localmente e posteriormente enviar o comando para atualizar essa deleção no servidor
-
 git tag -d nomedatag
 git push --delete nomedatag

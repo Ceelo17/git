@@ -161,3 +161,57 @@ merge - mescla as alterações de uma branch para outra sempre trazendo as infor
 
 verifica quais branchs foram mergeadas
 	git branch --merged
+
+caso a branch esteja em processo de merging e queira cancelar o processo
+	git merge --abort
+	git reset -- hard
+
+conceitos de SCM
+	main - versão final do projeto com tudo funcionando
+	develop - versão estável, porém não possui todas as funcionalidades
+	features - funcionalidades novas que podem ou não ser implementadas
+
+tags - versões do projeto no qual facilita encontrar pontos importantes
+este comando cria no momento em que você está dos commits, deste modo irá criar no último commit, não é possível criar duas tags com o mesmo nome
+
+este comando cria uma tag em um ponto específico, deste modo irá criar no último commit, não é possível criar duas tags com o mesmo nome
+	git tag nomedatag
+
+annotated tag - uma tag que pode levar uma mensagem e informações sobre quem criou
+	git tag -a -m "mensagemdatag" nomedatag
+
+mostra uma tag em específico, se for uma annotaded tag irá mostra informações sobre quem criou a tag, caso contrario irá mostrar somente detalhes do commit
+	git show nomedatag
+
+mostra todas as tags do projeto
+	gt tag
+
+mostra todas as tags com a descrição
+	git tag -n
+
+cria uma tag em um ponto específico informando o hash do commit
+	git tag nomedatag hashdocommit
+
+cria uma tag em um ponto específico informando o hash do commit e com informações
+	git tag -a -m "mensagemdatag" nomedatag hashdocommit
+
+envia a tag para o servidor
+	git push origin nomedatag (específica)
+	git push --tags (todas) - não é recomensado, pois pode ser que no seu repositório local tenham tags que já foram apagadas ou renomeadas do servidor
+
+é possível utilizar a tag como se fosse o hash em relação a navegar em um ponto específico do projeto, pois a tag tem um nome mais fácil que o hash gerado
+	git checkout nomedatag
+
+apagar uma tag do servidor, para apagar uma tag do servidor deve-se apagar localmente e posteriormente enviar o comando para atualizar essa deleção no servidor
+	git tag -d nomedatag
+	git push --delete nomedatag
+
+stash quando você possui alterações em uma branch que não estão prontas para um commit ainda e necessita navegar em outra branch sem levar estas alterações, após as mudanças na outra branch e o retorno para a branch principal é possível voltar as alterações, só é valido esse comando para arquivos rastreados, o stash fica salvo no repositório sendo possível utilizá-lo em outras branchs
+	git stash - salvar as mudanças antes de navegar para outra branch
+	git stash list - listar os stashs (o 0 será sempre o mais stash mais recente)
+		stash@{0}: wip on your_branch: hash commit_name
+		stash@{1}: wip on your_branch: hash commit_name
+	git stash apply - aplicar novamente as mudanças do stash mais recente stash@{0}
+	git stash apply stash@{1} - aplicar novamente as mudanças de um stash específico informando o seu número
+	git stash pop stash@{0} - aplicar o stash e remove-lo em seguida, caso não seja informado o stash irá utilizar o mais 
+	git stash drop stash@{0} - remover um stash sem a necessidade de aplicar, caso não seja informado o stash irá utilizar o mais recente

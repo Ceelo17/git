@@ -17,6 +17,7 @@ o ponto seleciona todos os arquivos
 
 commitar
 	git commit -m ""
+	git commit -a -m "" - adiciona e commit em seguida
 
 
 4 estados
@@ -224,3 +225,11 @@ stash quando você possui alterações em uma branch que não estão prontas par
 revert - reverter um commit feito passando ou o HEAD ou o hash do commit, este comando não deleta o commit existente, somente é feito um commit desfazendo asalterações deste commit, o log é permanecido
 	git revert
 	git revet --no-edit - irá reverter sem abrir a IDE para alterar a mensagem do revert
+
+
+reset - irá desfazer um commit, incluindo o histórico, pois irá apontar o ponteiro do HEAD para outro commit, o número após o HEAD define quantos commits irão ser desfeitos
+	git reset --hard HEAD~1
+	git reset --mixed HEAD~1 - irá desfazer o commit, porém irá manter as alterações para o estado modificado
+	git reset --soft HEAD~1 - irá desfazer o commit, porém irá manter as alterações para o estado adicionado
+
+

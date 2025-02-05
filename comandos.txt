@@ -241,4 +241,4 @@ rebase - rebase evita o cenário onde o histórico de commits perde sua cadeia l
 	git rebase main - deve-se estar na branch que você deseja altear a base (develop) e redirecionar qual a base (main)
 	git rebase continue - caso ocorra algum conflito com o comando git rebase, será necessário resolver os conflitos entre as branchs e após isso o git irá disponibilizar com o git status algumas opções para continuar o processo do rebase
 	git rebase --abort - caso esteja em processo de rebase e ocorra um erro/conflito e queira cancelar esse processo
-	
+	git pull --rebase - quando existe alterações remotamente do servidor e estas alterações não estão refletidas na branch local, irá gerar um erro/conflito ao tentar realizar o push, para atualizar a branch local com as mudanças do servidor sem a necessidade de um merge usa-se o pull com a flag --rebase

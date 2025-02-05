@@ -1,0 +1,240 @@
+verifica o estado da branch
+git status
+
+adiciona um arquivo para stage
+	git add file.txt
+
+adiciona todos os arquivos para stage
+	git add .
+
+deletar um arquivo específico - passar para unstage
+	git rm --cached file.txt
+
+deletar todos os arquivos - passar para unstage
+o -r significa de maneira recursiva
+o ponto seleciona todos os arquivos
+	git rm --cached -r .
+
+commitar
+	git commit -m ""
+	git commit -a -m "" - adiciona e commit em seguida
+
+
+4 estados
+
+untracted - não rastreado
+	- após adicionar o arquivo vai para staged
+unmodified - não modificado
+	- após modificar o arquivo vai para modified
+staged - preparado
+	- após commitar o arquivo vai para unmodified
+modified - modificado
+	- após descartar alterações o arquivo vai para unmodified
+
+untracked - não rastreado pelo git
+tracked (unmodified, modified, staged) - rastreado pelo git
+
+cenário que um arquivo se encontra em dois estados ao mesmo tempo
+	- é possível que um arquivo esteja em dois estados ao mesmo tempo, por exemplo, ao modificar um arquivo e adiciona-lo passando para stage e após isso modificar novamente, o git cria uma cópia do arquivo em stage e caso não seja adicionado a nova alteração e seja feito o commit, somente o que está em stage será commitado
+
+faz a comparação de dois arquivos (versão modificada e a versão não modificada) mostrando a diferença do que foi modificado, usa o arquivo modificado x arquivo commitado
+	git diff
+
+caso o arquivo esteja já em stage deve utilizar --cached ou --staged
+	git diff --cached
+	git diff --staged
+
+lista todas as alterações (commits) do mais recente para o mais antigo
+mostra o sha-1 código
+head aponta para o último commit
+	git log
+
+configura o email e o nome
+	git config --global user.email
+	git config --global user.name
+
+se aparecer : ao final do git bash quer dizer que tem mais arquivos para baixo e para sair dessa configuração aperte q de "quite"
+
+lista todas as alterações (commits) sem o nome do author, nem a data e o email, somente com o hash e o nome do commit
+	git log --oneline
+
+lista um número específico de commits que devem aparecer
+	git log -n
+	git log -1
+	git log -3
+
+lista o histórico de commits com as diferenças (patches) de cada commit
+	git log -p
+
+lista o histórico de commits de uma branch específica sem necessariamente estar nela
+	git log nomedabranch --oneline
+
+lista um resumo estático das alterações de cada commit
+	git log --stat
+	git log --shortstat --oneline
+
+altera a mensagem do último commit ou é possível adicionar arquivos nesse commit
+	git commit --amend -m ""
+	git commit --amend --no-edit (commita sem alterar a mensagem do commit) - este comando caso o commit já tenha sido enviado para o servidor qualquer alteração que seja feita com esse comando ao realizar o push irá ter conflitos, pois este comando altera o hash do último commit e para resolver deve-se executar o git pull antes e resolver os conflitos e após isso executar o commit com esse merge, caso queira sem esse commit deve executar o push com a tag --force (isso pode sobrescrever alterações de outros colaboradores)
+	git commit --amend (abre o editor vim)
+para editar o commit via vim aperte a tecla I para mudar para INSERT, altere a mensagem e aperte ESC para sair do modo edição, para salvar :wq (write and quite) e para sair sem salvar :q!
+deve utilizar o amend com cuidado pois caso a branch seja compartilhada ele exclui o último hash e commita um novo para alterar a mensagem do commit ou fazer alterações no arquivo, caso alguém esteja trabalhando no mesmo commit estará em uma versão antiga e que com o --amend que foi deletada podendo perder algum processo
+
+é possível alterar o editor padrão (vim) para outro editor da sua escolha com uma interface mais amigável, como por exemplo o visual studio code, nele somente alterando, salvando e fechando-o já realiza as alterações sem precisar dos comandos do vim (é necessário já ter instalado o outro editor)
+	git config --global core.editor "code --wait"
+
+abre o visual studio code diretamente na pasta
+	code .
+
+alterna entre os commits para visualizar os arquivos como estavam naquele commit e útil caso o projeto esteja sendo executado
+	git checkout código hash
+
+caso queira descartar todas as mudanças em stage para a última versão conhecida, esse comando irá descartar todas as mudanças em stage não será parcialmente, caso seja um arquivo novo ou que não tenha versões anteriores, untracked este comando não irá funcionar pois ele volta para a última versão conhecida deste arquivo e caso não tenha irá dar erro
+	git checkout nomedoaquivo.txt
+
+remove os arquivos não rastreados (untrackeds), a flag -f força a execução do comando
+	git clean -f
+
+remove arquivos rastreados da área de preparação (stage) se não houver ou se houver histórico antes
+	git rm --cached nomedoarquivo.txt
+
+remove arquivos rastreados da área de preparação (stage) somente se houver histórico antes
+	git restore --staged nomedoarquivo.txt
+
+volta totalmente o arquivo para o último commit (modificado e em preparação)
+mesmo que o git add tenho sido feito irá remover
+só não irá remover os arquivos sem rastreamento, pois o git não os conhece
+	git reset --hard
+
+arquivo gitignore faz com que arquivos que não tenham a necessidade de subir para o git sejam ignorados pelas suas extensões ou especificando cada arquivo
+	*.extensão - irá ignorar todos os arquivos com essa extensão
+	nomedoarquivo.txt - irá ignorar o arquivo específico
+
+para parar de rastrear o arquivo no git, útil quando é necessário adicionar o arquivo ou extensões ao gitignore, porém já é um arquivo conhecido do git, neste caso o passado do arquivo ainda existe, mas a partir deste comandos em diante deixa de ser observado pelo git, o objetivo seria esse mesmo mantendo a rastreabilidade destas ações
+	git update-index --skip-worktree nomedoarquivo.txt
+	git update-index --no-skip-worktree nomedoarquivo.txt para rastrear o arquivo ou as extensões novamente
+
+
+clonar um repositório sendo ele na nuvem ou local, mantém o histórico do git
+	git clone repositorio clonerepositorio
+	git clone https:repositorioremoto.com.br
+
+adiciona um repositório
+git remote add origin https:repositorioremoto.com.br
+
+atualiza as informações da branch para a versão mais atual do repositório
+	git pull
+
+conceito do GitHub no qual é possível copiar um repositório para a sua conta
+é possível acompanhar e comparar quando e o que foi alterado no repositório principal no repositório cópia
+	fork
+
+quando existe uma solicitação ou propostas de alterações de um contribuidor para o repositório main, é possível fazer a partir de um repositório fork, isso traz uma qualidade no código, pois outros usuários podem analisar e propor melhorias ou segestões
+	pull request
+
+quando alguma coisa foi reportada como defeituosa, bug, melhoria ou seugestõe por algum colaborador, fica visível para outros colaboradores no github
+issues
+
+um agrupamento de issues ou PR´s que representam marcos no projeto, como por exemplo, fases, objetivos, entre outros
+	milestones
+
+subir branch remotamente
+	git push --set-upstream origin nomedabranch
+
+deletar uma branch (localmente)
+	git branch -d nomedabranch
+
+deletar uma branch (repositório remoto)
+não é removida localmente, caso ocorra o push a branch irá ser criada novamente
+	git push --delete origin nomearam
+
+renomear um branch (localmente)
+	git branch -m nomedabranchnovo (caso esteja na branch)
+	git branch -m nomedabranch nomedabranchnovo (caso steja em outra branch)
+
+renomear uma branch (remotamente)
+não é possível renomear uma branch remota, porém é possível seguir com um processo diferente
+	1 passo deletar a branch remotamente - git push --delete origin nomedabrancherrado
+	2 passo alterar o nome localmente - git branch -m nomedabranchcorreto
+	3 passo executar novamente o comando para subir a branch remotamente com o nome correto - git push --set-upstream origin nomedabranchcorreto (caso não seja executado esse comando irá subir remotamente com o nome antigo que estava errado)
+
+merge - mescla as alterações de uma branch para outra sempre trazendo as informações
+caso ocorra mudanças no mesmo lugar nas duas branchs poderá ocorrer um conflito que deve ser resolvido
+
+verifica quais branchs não foram mergeadas
+	git branch --no-merged
+
+verifica quais branchs foram mergeadas
+	git branch --merged
+
+caso a branch esteja em processo de merging e queira cancelar o processo
+	git merge --abort
+	git reset -- hard
+
+conceitos de SCM
+	main - versão final do projeto com tudo funcionando
+	develop - versão estável, porém não possui todas as funcionalidades
+	features - funcionalidades novas que podem ou não ser implementadas
+
+tags - versões do projeto no qual facilita encontrar pontos importantes
+este comando cria no momento em que você está dos commits, deste modo irá criar no último commit, não é possível criar duas tags com o mesmo nome
+
+este comando cria uma tag em um ponto específico, deste modo irá criar no último commit, não é possível criar duas tags com o mesmo nome
+	git tag nomedatag
+
+annotated tag - uma tag que pode levar uma mensagem e informações sobre quem criou
+	git tag -a -m "mensagemdatag" nomedatag
+
+mostra uma tag em específico, se for uma annotaded tag irá mostra informações sobre quem criou a tag, caso contrario irá mostrar somente detalhes do commit
+	git show nomedatag
+
+mostra todas as tags do projeto
+	gt tag
+
+mostra todas as tags com a descrição
+	git tag -n
+
+cria uma tag em um ponto específico informando o hash do commit
+	git tag nomedatag hashdocommit
+
+cria uma tag em um ponto específico informando o hash do commit e com informações
+	git tag -a -m "mensagemdatag" nomedatag hashdocommit
+
+envia a tag para o servidor
+	git push origin nomedatag (específica)
+	git push --tags (todas) - não é recomensado, pois pode ser que no seu repositório local tenham tags que já foram apagadas ou renomeadas do servidor
+
+é possível utilizar a tag como se fosse o hash em relação a navegar em um ponto específico do projeto, pois a tag tem um nome mais fácil que o hash gerado
+	git checkout nomedatag
+
+apagar uma tag do servidor, para apagar uma tag do servidor deve-se apagar localmente e posteriormente enviar o comando para atualizar essa deleção no servidor
+	git tag -d nomedatag
+	git push --delete nomedatag
+
+stash quando você possui alterações em uma branch que não estão prontas para um commit ainda e necessita navegar em outra branch sem levar estas alterações, após as mudanças na outra branch e o retorno para a branch principal é possível voltar as alterações, só é valido esse comando para arquivos rastreados, o stash fica salvo no repositório sendo possível utilizá-lo em outras branchs
+	git stash - salvar as mudanças antes de navegar para outra branch
+	git stash list - listar os stashs (o 0 será sempre o mais stash mais recente)
+		stash@{0}: wip on your_branch: hash commit_name
+		stash@{1}: wip on your_branch: hash commit_name
+	git stash apply - aplicar novamente as mudanças do stash mais recente stash@{0}
+	git stash apply stash@{1} - aplicar novamente as mudanças de um stash específico informando o seu número
+	git stash pop stash@{0} - aplicar o stash e remove-lo em seguida, caso não seja informado o stash irá utilizar o mais 
+	git stash drop stash@{0} - remover um stash sem a necessidade de aplicar, caso não seja informado o stash irá utilizar o mais recente
+	git stash branch nome_branch stash@{1} - criar uma branch a partir de um stash, caso não seja informado o stash irá utilizar o mais recente
+
+revert - reverter um commit feito passando ou o HEAD ou o hash do commit, este comando não deleta o commit existente, somente é feito um commit desfazendo asalterações deste commit, o log é permanecido
+	git revert
+	git revet --no-edit - irá reverter sem abrir a IDE para alterar a mensagem do revert
+
+
+reset - irá desfazer um commit, incluindo o histórico, pois irá apontar o ponteiro do HEAD para outro commit, o número após o HEAD define quantos commits irão ser desfeitos
+	git reset --hard HEAD~1
+	git reset --mixed HEAD~1 - irá desfazer o commit, porém irá manter as alterações para o estado modificado
+	git reset --soft HEAD~1 - irá desfazer o commit, porém irá manter as alterações para o estado adicionado
+
+force - tag que irá forçar um comando do git, este comando deve ser utilizado com cautela, pois dependendo do comando irá perder o rastreamento das alterações, é um comando poderoso e perigoso ao mesmo tempo, pois passa por cima dos avisos e erros gerados por um simples git push, por exemplo sem o --force
+	git push --force - quando se faz um git reset --hard HEAD~1 é necessário enviar para o servidor estas alterações e para isso deve-se utilizar o git push --force, pois o ponteiro HEAD do servidor é diferente do local alterado pelo reset, caso esteja trabalhando em uma branch compartilhada com outra pessoa, é possível que aja um confito, pois as alterações que foram feitas localmente e no servidor mudando o ponteiro do HEAD terão que ser refletidas também no histórico de outra pessoa que esteja em conjunto, caso a outra pessoa tente fazer o push sem realizar o reset localmente irá ter conflito que será resolvido com um pull e um merge, porém a outra pessoa não sabe da execução do git push --force e o seu histórico ainda tem os commits que foram desfeitos via reset pela primeira pessoa, ou seja após o push da segunda pessoa irá voltar todos os commits desfeitos pelo reset e ainda serão aplicados as novas alterações após estes commits virarando um ciclo, pois a pessoa que fez o reset irá ter problemas para dar o push também, este comando se torna útil quando é necessário apagar o histórico/refazer devido a inserção de arquivos sensíveis ou que não devem fazer parte do histórico, porém caso a branch esteja sendo compartilhada com outras pessoas é necessário comunica-las após isso
+
+	git push --force-with-lease - irá executar o processo de force, porém somente se nenhuma alteração for perdida, caso exista irá gerar um erro
+
+rebase - rebase evita um cenário onde o histórico de commits perde sua cadeia linear, por exemplo, quando se cria uma branch a partir de um ponto da main com funcionalidades (develop) e surge uma nova alteração na main antes de finalizar a develop, ou seja nesse caso não existe um cenário errado, porém é necessário realizar um merge de sincronismo entre a main e a develop e este merge é visto como uma poluição e uma alteração no ciclo linear da cadeia de branchs

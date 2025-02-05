@@ -222,7 +222,7 @@ stash quando você possui alterações em uma branch que não estão prontas par
 	git stash drop stash@{0} - remover um stash sem a necessidade de aplicar, caso não seja informado o stash irá utilizar o mais recente
 	git stash branch nome_branch stash@{1} - criar uma branch a partir de um stash, caso não seja informado o stash irá utilizar o mais recente
 
-revert - reverter um commit feito passando ou o HEAD ou o hash do commit, este comando não deleta o commit existente, somente é feito um commit desfazendo asalterações deste commit, o log é permanecido
+revert - reverter um commit feito passando ou o HEAD ou o hash do commit, este comando não deleta o commit existente, somente é feito um commit desfazendo as alterações deste commit, o log é permanecido
 	git revert
 	git revet --no-edit - irá reverter sem abrir a IDE para alterar a mensagem do revert
 

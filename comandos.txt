@@ -252,3 +252,5 @@ fetch - comando similar ao pull, porém o pull por padrão caso tenha atualizaç
 	git rebase origin/nome-da-branch - caso tenha alterações locais
 	git reset --hard origin/nome-da-branch - caso não tenha alterações locais
 	
+cherry-pick - este comando adiciona um commit ao HEAD, é possível por exemplo caso tenha um commit HEAD e abaixo tenha commits que necessitam de uma junção, desça o HEAD, faça o git rebase -i até o HEAD atual e após completar a mesclagem volte o commit do HEAD antigo com a atualização do rebase abaixo
+	git cherry-pick hash-do-commit

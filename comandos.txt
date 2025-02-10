@@ -263,3 +263,7 @@ bisect - comando que usa um algoritmo de busca binária, no qual consegue identi
 	git bisect good hash-do-commit - neste comando é necessário informar o hash do commit onde as alterações estavam corretas
 	git bisect bad hash-do-comit - neste comando é necessário informar o hash do commit onde as alterações estavam erradas
 	git bisect reset - neste comando irá parar o processo de bisect, caso o commit seja encontrado ou não
+
+alias - serve para abreviar comandos no git, é necessário configura-lo globalmente, os parâmetros requeridos são - após o alias. é necessário informar sem espaços as palavras que serão utilizadas na abreviação, após isso com um espaço deve informar o comando em questão que será abreviado, por exemplo git config --global alias.s status irá abreviar o git status -> git s, caso o comando tenha parâmetros na frente deve informa-lo entre aspas simples, git config --global alias.line 'log --oneline', não é possível associar a mesma abreviação para dois comandos, será vinculado a somente um
+	git config --global alias.[abreviação] comando-a-ser-abreviado
+	git config --global unset alias.[abreviação] - para descartar uma abreviaçao

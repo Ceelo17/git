@@ -49,6 +49,9 @@ mostra o sha-1 código
 head aponta para o último commit
 	git log
 
+lista todas as movimentações/alterações no repositório mantendo um histórico, útil para recuperar o hash de commits deletados ou alterados para utiliza-los futuramente.
+	git reflog
+
 configura o email e o nome
 	git config --global user.email
 	git config --global user.name

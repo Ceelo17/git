@@ -266,4 +266,12 @@ bisect - comando que usa um algoritmo de busca binária, no qual consegue identi
 
 alias - serve para abreviar comandos no git, é necessário configura-lo globalmente, os parâmetros requeridos são - após o alias. é necessário informar sem espaços as palavras que serão utilizadas na abreviação, após isso com um espaço deve informar o comando em questão que será abreviado, por exemplo git config --global alias.s status irá abreviar o git status -> git s, caso o comando tenha parâmetros na frente deve informa-lo entre aspas simples, git config --global alias.line 'log --oneline', não é possível associar a mesma abreviação para dois comandos, será vinculado a somente um
 	git config --global alias.[abreviação] comando-a-ser-abreviado
-	git config --global unset alias.[abreviação] - para descartar uma abreviaçao
+	git config --global unset alias.[abreviação] - para descartar uma abreviação
+
+grep - comando utilizado para filtrar buscas de branchs ou logs com uma nomenclatura específica utilizando comandos Linux, o filtro é case sensitive, ou seja letras maiúsculas e minúsculas importam.
+	git [comando-git] | grep [filtro]
+	git branch | grep [filtro]
+	git log --oneline | grep [filtro]
+	git [comando-alias] | grep [filtro]
+
+
